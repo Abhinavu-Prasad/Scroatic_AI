@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Socratic AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container glass">
+        <div class="logo auth-logo">
+            <h1>Socratic AI</h1>
+            <div class="status-indicator"></div>
+        </div>
+        <h2>Create Account</h2>
+        {% if error %}
+            <div class="system-alert incorrect" style="margin-bottom: 1rem;">{{ error }}</div>
+        {% endif %}
+        <form action="{{ url_for('register') }}" method="POST" class="auth-form">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Choose a Username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Choose a Password" required autocomplete="new-password">
+            </div>
+            <button type="submit" class="auth-btn">Register</button>
+        </form>
+        <p class="auth-links">Already have an account? <a href="{{ url_for('login') }}">Sign In</a>.</p>
+    </div>
+</body>
+</html>
